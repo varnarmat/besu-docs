@@ -25,6 +25,10 @@ const config = {
     locales: ["en"],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
   presets: [
     [
       "classic",
@@ -37,7 +41,7 @@ const config = {
           path: "./docs",
           includeCurrentVersion: true,
           // Set to the last stable release
-          lastVersion: "24.7.0",
+          lastVersion: "24.7.1",
           versions: {
             //defaults to the ./docs folder
             // using 'development' instead of 'next' as path
@@ -47,8 +51,11 @@ const config = {
             },
             // The last stable release in the versioned_docs/version-stable
             // STABLE-AUTOMATION-TOKEN. Don't remove this as this is used for version update automation
+            "24.7.1": {
+              label: "stable (24.7.1)",
+            },
             "24.7.0": {
-              label: "stable (24.7.0)",
+              label: "24.7.0",
             },
             "24.6.0": {
               label: "24.6.0",
@@ -260,6 +267,20 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ["solidity", "toml", "java"],
       },
+      mermaid: {
+        options: {
+          fontFamily: "arial, verdana, sans-serif;",
+          wrap: true,
+          sequence: {
+            diagramMarginX: 25,
+            diagramMarginY: 25,
+          },
+          flowchart: {
+            diagramPadding: 5,
+            nodeSpacing: 75,
+          },
+        },
+      },
       languageTabs: [
         {
           highlight: "bash",
@@ -311,7 +332,11 @@ const config = {
           },
           {
             from: "/public-networks/how-to/configuration-file",
-            to: "/public-networks/how-to/use-configuration-file",
+            to: "/development/public-networks/how-to/configure-besu",
+          },
+          {
+            from: "/public-networks/how-to/use-configuration-file",
+            to: "/development/public-networks/how-to/configure-besu",
           },
           {
             from: "/private-networks/tutorials/permissioning/onchain",
@@ -351,6 +376,7 @@ const config = {
         indexBlog: false,
       }),
     ],
+    "@docusaurus/theme-mermaid",
   ],
 };
 
