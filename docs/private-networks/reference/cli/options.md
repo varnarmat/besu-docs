@@ -941,7 +941,7 @@ Xsnapsync-bft-enabled=true
 </TabItem>
 </Tabs>
 
-Enables or disables snap synchronization for networks using BFT consensus mechanisms such as [IBFT 2.0](../../how-to/configure/consensus/ibft) or [QBFT](../../how-to/configure/consensus/qbft). The default is `false`.
+Enables or disables snap synchronization for networks using BFT consensus mechanisms such as [IBFT 2.0](../../how-to/configure/consensus/ibft.md) or [QBFT](../../how-to/configure/consensus/qbft.md). The default is `false`.
 
 This option is intended for use in private, permissioned networks that use BFT consensus mechanisms.When enabled, this option allows Besu to use snap sync on BFT networks. Use this option in combination with the `--sync-mode=SNAP` option.
 
