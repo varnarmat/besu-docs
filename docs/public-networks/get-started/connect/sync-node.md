@@ -30,6 +30,34 @@ This means that archive nodes require more disk space than full nodes.
 Besu must connect with other peers to sync with the network. If your node is having trouble peering, 
 try [troubleshooting peering](../../how-to/troubleshoot/peering.md).
 
+Besu supports several synchronization options for different network types and use cases:
+
+### Public network syncing
+
+For public networks, Besu offers the following sync modes:
+
+- [Snap synchronization](#snap-synchronization)
+- [Checkpoint synchronization](#checkpoint-synchronization)
+- [Fast synchronization](#fast-synchronization)
+- [Full synchronization](#run-an-archive-node)
+
+### Private network syncing
+
+For private, permissioned blockchain networks, Besu uses the same synchronization modes as public networks, but with specific configurations for private network needs.
+
+When setting up a private network, consider the following:
+
+- Use the same sync modes as public networks (snap, checkpoint, fast, or full sync).
+- Configure the network with a custom genesis file.
+- Set the network ID and bootnode(s) specific to your private network.
+- Implement permissioning features to control network access.
+
+Choose the appropriate sync mode based on your private network's requirements and node purposes.
+
+:::note
+When configuring syncing for a private network, ensure all nodes use compatible sync modes and configurations.
+:::
+
 ## Sync times
 
 To sync with a public network, Besu runs two processes in parallel: the world state sync and the
@@ -222,19 +250,7 @@ The easiest solution in this scenario is to restart fast sync to obtain a new pi
 
 :::
 
-## Run an archive node
-
-An archive node stores all historical states of the blockchain.
-To run an archive node, enable full synchronization (full sync) using
-[`--sync-mode=FULL`](../../reference/cli/options.md#sync-mode).
-
-Full sync starts from the genesis block and reprocesses all transactions.
-
-:::caution important
-Do not run an archive node with the [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries)
-data storage format.
-Bonsai is designed for retrieving recent data only.
-:::
+## Sync mode comparison
 
 | Sync Mode                 | Description         | Requirements            | Method                         | Limitations    |
 |---------------------------|---------------------|-------------------------|--------------------------------|----------------|
@@ -261,3 +277,17 @@ Bonsai is designed for retrieving recent data only.
 | Downloads entire blockchain, verifies all states from genesis block.
 | Slowest sync mode, requires the most disk space.
 |
+
+## Run an archive node
+
+An archive node stores all historical states of the blockchain.
+To run an archive node, enable full synchronization (full sync) using
+[`--sync-mode=FULL`](../../reference/cli/options.md#sync-mode).
+
+Full sync starts from the genesis block and reprocesses all transactions.
+
+:::caution important
+Do not run an archive node with the [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries)
+data storage format.
+Bonsai is designed for retrieving recent data only.
+:::
