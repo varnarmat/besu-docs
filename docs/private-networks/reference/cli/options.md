@@ -904,6 +904,55 @@ privacy-url="http://127.0.0.1:8888"
 
 The URL on which the [Tessera node](../../tutorials/privacy/index.md#3-create-tessera-configuration-files) is running.
 
+### `Xsnapsync-bft-enabled`
+
+:::caution
+This is an experimental feature. It is not stable and is not fully supported in all versions of Besu. Use this option with caution.
+:::
+
+<Tabs>
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+--Xsnapsync-bft-enabled[=<true|false>]
+```
+
+</TabItem>
+<TabItem value="Example" label="Example">
+
+```bash
+--Xsnapsync-bft-enabled=true
+```
+
+</TabItem>
+<TabItem value="Environment variable" label="Environment variable">
+
+```bash
+BESU_XSNAPSYNC_BFT_ENABLED=true
+```
+
+</TabItem>
+<TabItem value="Configuration file" label="Configuration file">
+
+```bash
+Xsnapsync-bft-enabled=true
+```
+
+</TabItem>
+</Tabs>
+
+Enables or disables snap synchronization for networks using BFT consensus mechanisms such as [IBFT 2.0](../../how-to/configure/consensus/ibft) or [QBFT](../../how-to/configure/consensus/qbft). The default is `false`.
+
+When enabled, this option allows Besu to use snap sync on BFT networks. Use this option in combination with the `--sync-mode=SNAP` option.
+
+Example usage:
+
+```bash
+besu --network=<your_network> --sync-mode=SNAP --Xsnapsync-bft-enabled=true
+```
+
+This option is primarily intended for use in private, permissioned networks that employ BFT consensus mechanisms.
+
 <!-- Links -->
 
 [accounts permissions configuration file]: ../../how-to/use-permissioning/local.md#permissions-configuration-file
